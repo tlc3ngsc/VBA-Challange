@@ -225,6 +225,17 @@ For Each ws In Worksheets
           StartRow = I
       End If
    Next I
+   LastRow = ws.Range("N1").End(xlDown).Row
+   I = 0
+    For I = 2 To LastRow
+       If ws.Cells(I, 14).Value < 0 Then
+          ws.Cells(I, 14).Interior.ColorIndex = 3
+          StartRow = I
+          Else
+          ws.Cells(I, 14).Interior.ColorIndex = 5
+      End If
+   Next I
+   
    ws.Range("Q3").Value = GreatesPercentDecrease
    ws.Range("Q3").NumberFormat = "0.0%"
    ws.Range("P3").Value = ws.Cells(StartRow, 9).Value
@@ -243,3 +254,6 @@ For Each ws In Worksheets
 Next ws
 
 End Sub
+
+
+    
